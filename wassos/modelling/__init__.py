@@ -1,0 +1,1 @@
+from .wassos import WassOS
