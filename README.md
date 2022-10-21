@@ -21,7 +21,7 @@ for a thorough evaluation across different domains. The social media posts are f
 
 ### Input Data Format
 
-The expected format of input is provided in [artifacts](artifacts/amazon/data/input_example). 
+The expected format of input is provided in [artifacts](wassos/artifacts/amazon/data/input_example). 
 
 group_id | review_text | category | review_tag
 --- | --- | --- | ---
