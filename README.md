@@ -37,5 +37,37 @@ from semantic and syntactic spaces to construct the summary distribution, and it
 uses one Wasserstein barycenter from semantic space and constrcuct the syntactic distribuiton with the method for each document. It performs better on 
 reviews dataset. You can a strategy in [model_hp.py](wassos/utils/hparams/model_hp.py) based on your data.
 
+## Running
+
+If you want to use your own data, you need to create your vocabulary, tag_vocabulary and truecaser. 
+
+### Vocabulary Creation
+
+```
+python copycat/scripts/create_vocabulary.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/vocab.txt
+```
+
+### Tag_vocabulary Creation
+
+```
+python copycat/scripts/create_vocabulary.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/tag.txt
+```
+
+### Truecaser Creation
+
+```
+python copycat/scripts/train_truecaser.py --data_path=your_data_path --tcaser_fp=data/dataset_name/tcaser.model
+```
+
+### Workflow
+
+You can change the parameters in [run_hp.py](wassos/utils/hparams/run_hp.py).
+Then you can train and evaluate the the model with the following command:
+```
+python wassos/scripts/run_workflow.py
+```
+
+
+
 
 
