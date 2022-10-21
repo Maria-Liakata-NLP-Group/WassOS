@@ -44,19 +44,19 @@ If you want to use your own data, you need to create your vocabulary, tag_vocabu
 ### Vocabulary Creation
 
 ```
-python copycat/scripts/create_vocabulary.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/vocab.txt
+python wassos/scripts/create_vocabulary.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/vocab.txt
 ```
 
 ### Tag_vocabulary Creation
 
 ```
-python copycat/scripts/create_vocabulary.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/tag.txt
+python wassos/scripts/create_tag.py --data_path=your_data_path --vocab_fp=data/dataset_name/vocabs/tag.txt
 ```
 
 ### Truecaser Creation
 
 ```
-python copycat/scripts/train_truecaser.py --data_path=your_data_path --tcaser_fp=data/dataset_name/tcaser.model
+python wassos/scripts/train_truecaser.py --data_path=your_data_path --tcaser_fp=data/dataset_name/tcaser.model
 ```
 
 ### Workflow
