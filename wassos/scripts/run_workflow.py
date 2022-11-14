@@ -227,8 +227,6 @@ if parser_args.infer_input_file_path is None:
 
     gen_folder_path = comb_paths(run_hp.output_path, "output")
 
-    # 这一步是对生成的摘要进行评估
-
     summ_eval(output_folder=gen_folder_path, eval_data_source=eval_test_data_source,
               summ_gen_func=partial(idev.summ_generator,
                                     summ_post_proc=summ_post_proc),
