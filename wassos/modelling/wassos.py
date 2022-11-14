@@ -161,14 +161,14 @@ class WassOS(Module):
             dim = enc_hidden_dim
         self.rev_weight = Rev(dim, 1)
 
-        # multi-task的encode的维度和解码维度
+        # encode of multi-task
         self.task_enc_dim = int(enc_hidden_dim/2)
         self.task_dec_dim = int(enc_hidden_dim/2)
         self.args = args
         self.vocab = vocab
         self.tag_vocab = tag_vocab
 
-        # 用来计算multi-task的loss =====================
+        # multi-task loss =====================
         self.sup_syn = GruPointerDecoder(input_dim=emb_dim + int(z_dim/2),
                                           hidden_dim=int(z_dim/2),
                                           contxt_dim=enc_hidden_dim,
@@ -187,7 +187,7 @@ class WassOS(Module):
             dec_hidden=self.task_dec_dim
         )
 
-        # 用z_syn 去预测句子
+        # z_syn predicts the sentence
         self.syn_infer = GruPointerDecoder(input_dim=emb_dim + int(z_dim/2),
                                           hidden_dim=int(z_dim/2),
                                           contxt_dim=enc_hidden_dim,
@@ -199,7 +199,7 @@ class WassOS(Module):
                                           pass_extra_feat_to_pg=False,
                                           logit_fun=self.logit)
 
-        # 用z_sem 去预测句子
+        # z_sem predicts the sentence
         self.sem_infer = GruPointerDecoder(input_dim=emb_dim + int(z_dim/2),
                                           hidden_dim=int(z_dim/2),
                                           contxt_dim=enc_hidden_dim,
@@ -221,7 +221,7 @@ class WassOS(Module):
                                           cat_contx_to_inp=True,
                                           pass_extra_feat_to_pg=False,
                                           logit_fun=self.logit)
-        # 用syn去预测 bag of words
+        # syn predicts bag of words
         self.sem_adv = BridgeMLP(
             args=self.args,
             vocab=self.vocab,
@@ -368,7 +368,7 @@ class WassOS(Module):
 
         avg_rec_term = rec_term.mean(dim=0)
 
-        # 这里就是计算了loss函数里 以z采样的概率生成句子的概率值
+        # loss for E
 
         loss += -avg_rec_term
 
@@ -511,8 +511,7 @@ class WassOS(Module):
         :param states_mask: [batch_size, seq_len1]
         :param group_indxs: [batch_size2, seq_len2]
                       indxs of reviews belonging to the same product
-                      [batch_size2(这一个bantch_size里有多少组reviews), seq_len2(max_rev_per_group，一组里有多少个评论)]
-                      其实就是属于一组的reviews的 序号
+                      [batch_size2, seq_len2(max_rev_per_group)]
         :param group_indxs_mask: [batch_size2, seq_len2]
         """
 
