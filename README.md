@@ -10,7 +10,7 @@ Our code is based on the framework of [Copycat](https://arxiv.org/abs/1911.02247
 
 ## Installation
 The main model is in [file](https://github.com/Maria-Liakata-NLP-Group/THVAE-summary/blob/main/copycat/modelling/thvae.py), it show the process how to use hierarchical VAE to get the latent code of each segment of a timeline.
-[file][https://github.com/Maria-Liakata-NLP-Group/THVAE-summary/blob/main/copycat/modelling/interfaces/ithvae.py] has the mehod of how to construct the summary representation using key phrases.
+[file](https://github.com/Maria-Liakata-NLP-Group/THVAE-summary/blob/main/copycat/modelling/interfaces/ithvae.py) has the mehod of how to construct the summary representation using key phrases.
 
 ## Data
 
